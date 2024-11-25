@@ -36,7 +36,7 @@ class PerfilPage extends StatelessWidget {
                     Expanded(
                       child: Text(
                         'https://github.com/Lozrea',
-                        style: GoogleFonts.robotoMono(fontSize: 18, color: Colors.black87),
+                        style: GoogleFonts.robotoMono(fontSize: 18),
                       ),
                     ),
                   ],

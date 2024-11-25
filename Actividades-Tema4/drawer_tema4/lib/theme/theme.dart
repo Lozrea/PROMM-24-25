@@ -24,7 +24,7 @@ class AppTheme {
     primaryColor: Colors.deepPurple,
     scaffoldBackgroundColor: Colors.grey.shade900,
     appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.deepPurple,
       foregroundColor: Colors.white,
       elevation: 0,
     ),

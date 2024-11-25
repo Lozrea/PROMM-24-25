@@ -29,19 +29,32 @@ class PerfilHistorias extends StatelessWidget {
           // Si el índice es 0, mostramos el icono "+", de lo contrario una imagen
           return Column(
             children: [
-              CircleAvatar(
-                radius: 30,
-                backgroundColor: Colors.grey.shade300,
-                child: index == 0
-                    ? const Icon(Icons.add, color: Colors.black)
-                    : ClipOval(
-                        child: Image.network(
-                          imagenesDestacadas[index - 1], // Asignamos la imagen
-                          width: 60,
-                          height: 60,
-                          fit: BoxFit.cover,
-                        ),
+              GestureDetector(
+                onTap: () {
+                  if (index == 0) {
+                    // Mostrar mensaje de snack bar
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Añadiendo historia...'),
+                        duration: Duration(seconds: 2),
                       ),
+                    );
+                  }
+                },
+                child: CircleAvatar(
+                  radius: 30,
+                  backgroundColor: Colors.grey.shade300,
+                  child: index == 0
+                      ? const Icon(Icons.add, color: Colors.black)
+                      : ClipOval(
+                          child: Image.network(
+                            imagenesDestacadas[index - 1], // Asignamos la imagen
+                            width: 60,
+                            height: 60,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                ),
               ),
               const SizedBox(height: 5),
               Text(

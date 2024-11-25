@@ -11,17 +11,22 @@ class PerfilActions extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          _buildActionButton('Editar perfil'),
+          _buildActionButton('Editar perfil', context),
         ],
       ),
     );
   }
 
   // Botón de acción personalizado
-  Widget _buildActionButton(String label) {
+  Widget _buildActionButton(String label, BuildContext context) {
     return Expanded(
       child: OutlinedButton(
-        onPressed: () {},
+        onPressed: () {
+          // Mostrar un mensaje al presionar el botón
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('No hemos podido acceder')),
+          );
+        },
         style: OutlinedButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: 12),
           side: BorderSide(color: Colors.grey.shade300),
