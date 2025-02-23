@@ -1,0 +1,145 @@
+name: pokepedia
+description: "A new Flutter project."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+  provider: ^6.1.2
+  graphql_flutter: ^5.1.2 # Para la API
+  hive: ^2.2.3 # Para la base de datos local
+  hive_flutter: ^1.1.0 # Para la base de datos local
+  path_provider: ^2.1.4 # Para rutas en almacenamiento
+  intl: ^0.19.0
+  cached_network_image: ^3.4.1
+  percent_indicator: ^4.2.3
+  shared_preferences: ^2.3.2
+  flutter_speed_dial: ^7.0.0
+  flutter_animate: ^4.5.0
+  sqflite: ^2.0.2  
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  build_runner: ^2.4.11
+  hive_generator: ^2.0.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/pokeball-background.png
+    - assets/images/pokeball-tabs-background.png
+    - assets/images/confused-pikachu.png
+    - assets/images/scared-psyduck.png
+    - assets/images/pokemon_types/backgrounds/bug.jpg
+    - assets/images/pokemon_types/backgrounds/dark.jpg
+    - assets/images/pokemon_types/backgrounds/dragon.jpg
+    - assets/images/pokemon_types/backgrounds/electric.jpg
+    - assets/images/pokemon_types/backgrounds/fairy.jpg
+    - assets/images/pokemon_types/backgrounds/fighting.jpg
+    - assets/images/pokemon_types/backgrounds/fire.jpg
+    - assets/images/pokemon_types/backgrounds/flying.jpg
+    - assets/images/pokemon_types/backgrounds/ghost.jpg
+    - assets/images/pokemon_types/backgrounds/grass.jpg
+    - assets/images/pokemon_types/backgrounds/ground.jpg
+    - assets/images/pokemon_types/backgrounds/ice.jpg
+    - assets/images/pokemon_types/backgrounds/normal.jpg
+    - assets/images/pokemon_types/backgrounds/poison.jpg
+    - assets/images/pokemon_types/backgrounds/psychic.jpg
+    - assets/images/pokemon_types/backgrounds/rock.jpg
+    - assets/images/pokemon_types/backgrounds/shadow.jpg
+    - assets/images/pokemon_types/backgrounds/steel.jpg
+    - assets/images/pokemon_types/backgrounds/stellar.jpg
+    - assets/images/pokemon_types/backgrounds/unknown.jpg
+    - assets/images/pokemon_types/backgrounds/water.jpg
+    - assets/images/pokemon_types/icons/bug.png
+    - assets/images/pokemon_types/icons/dark.png
+    - assets/images/pokemon_types/icons/dragon.png
+    - assets/images/pokemon_types/icons/electric.png
+    - assets/images/pokemon_types/icons/fairy.png
+    - assets/images/pokemon_types/icons/fighting.png
+    - assets/images/pokemon_types/icons/fire.png
+    - assets/images/pokemon_types/icons/flying.png
+    - assets/images/pokemon_types/icons/ghost.png
+    - assets/images/pokemon_types/icons/grass.png
+    - assets/images/pokemon_types/icons/ground.png
+    - assets/images/pokemon_types/icons/ice.png
+    - assets/images/pokemon_types/icons/normal.png
+    - assets/images/pokemon_types/icons/poison.png
+    - assets/images/pokemon_types/icons/psychic.png
+    - assets/images/pokemon_types/icons/rock.png
+    - assets/images/pokemon_types/icons/shadow.png
+    - assets/images/pokemon_types/icons/steel.png
+    - assets/images/pokemon_types/icons/stellar.png
+    - assets/images/pokemon_types/icons/unknown.png
+    - assets/images/pokemon_types/icons/water.png
+
+  fonts:
+  #La tipo de pokemon no es segura, demasiado de fantasía
+    # - family: PokeGOTypes 
+    #   fonts:
+    #     - asset: assets/fonts/pokemon/PokeGOTypes.ttf
+    # - family: PokemonHollow
+    #   fonts:
+    #     - asset: assets/fonts/pokemon/Pokemon Hollow.ttf
+    # - family: PokemonSolid
+    #   fonts:
+    #     - asset: assets/fonts/pokemon/Pokemon Solid.ttf
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/poppins/Poppins-ThinItalic.ttf
+          weight: 100
+          style: italic
+        - asset: assets/fonts/poppins/Poppins-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/poppins/Poppins-ExtraLightItalic.ttf
+          weight: 200
+          style: italic
+        - asset: assets/fonts/poppins/Poppins-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/poppins/Poppins-LightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/poppins/Poppins-Light.ttf
+          weight: 300
+        - asset: assets/fonts/poppins/Poppins-Italic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/poppins/Poppins-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/poppins/Poppins-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/poppins/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/poppins/Poppins-SemiBoldItalic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/poppins/Poppins-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/poppins/Poppins-BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/poppins/Poppins-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/poppins/Poppins-ExtraBoldItalic.ttf
+          weight: 800
+          style: italic
+        - asset: assets/fonts/poppins/Poppins-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/poppins/Poppins-BlackItalic.ttf
+          weight: 900
+          style: italic
+        - asset: assets/fonts/poppins/Poppins-Black.ttf
+          weight: 900
+    - family: Figtree
+      fonts:
+        - asset: assets/fonts/figtree/Figtree-Italic-VariableFont_wght.ttf
+          style: italic
+        - asset: assets/fonts/figtree/Figtree-VariableFont_wght.ttf
