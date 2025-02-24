@@ -1,27 +1,27 @@
-import 'package:pokepedia/data/models/habilidad_pokemon.dart';
 import 'package:pokepedia/data/models/pokemon.dart';
-import 'package:pokepedia/data/models/cad_evolucion_pokemon.dart';
-import 'package:pokepedia/data/models/pokemon_moves.dart';
-import 'package:pokepedia/data/models/estadistica_pokemon.dart';
+import 'package:pokepedia/data/models/pokemon_ability.dart';
+import 'package:pokepedia/data/models/pokemon_evolution_chain.dart';
+import 'package:pokepedia/data/models/pokemon_move.dart';
+import 'package:pokepedia/data/models/pokemon_stat.dart';
 import 'package:pokepedia/data/models/pokemon_type.dart';
 import 'package:pokepedia/data/models/pokemon_type_effectiveness.dart';
 import 'package:pokepedia/core/utils/enums/pokemon_type.dart';
-import 'package:pokepedia/core/utils/enums/pokemon_type_effectiveness_enum.dart';
+import 'package:pokepedia/core/utils/enums/pokemon_type_effectiveness.dart';
 import 'package:pokepedia/core/utils/helpers/format_text_helper.dart';
 
 // Contiene los detalles completos de un Pokémon.
-class DetallesPokemon extends Pokemon {
+class PokemonDetails extends Pokemon {
   final String description;
   final int baseExperience;
   final int height;
   final int weight;
-  final List<PokemonMoves> moves;
-  final List<HabilidadPokemon> abilities;
-  final List<EstadisticaPokemon> stats;
-  final CadenaEvolucionPokemon evolutionChain;
+  final List<PokemonMove> moves;
+  final List<PokemonAbility> abilities;
+  final List<PokemonStat> stats;
+  final PokemonEvolutionChain evolutionChain;
   final List<PokemonTypeEffectiveness> effectiveness;
 
-  DetallesPokemon({
+  PokemonDetails({
     required super.id,
     required super.name,
     required super.types,
@@ -38,24 +38,24 @@ class DetallesPokemon extends Pokemon {
     required this.effectiveness,
   });
 
-  factory DetallesPokemon.fromJson(Map<String, dynamic> json) {
+  factory PokemonDetails.fromJson(Map<String, dynamic> json) {
     final types = (json['types'] as List)
-      .map((data) => TiposPokemon.fromJson(data))
+      .map((data) => PokemonType.fromJson(data))
       .toList();
 
     final moves = (json['moves']['nodes'] as List)
-      .map((data) => PokemonMoves.fromJson(data))
+      .map((data) => PokemonMove.fromJson(data))
       .toList();
 
     final abilities = (json['abilities'] as List)
-      .map((data) => HabilidadPokemon.fromJson(data))
+      .map((data) => PokemonAbility.fromJson(data))
       .toList();
 
     final stats = (json['stats'] as List)
-      .map((data) => EstadisticaPokemon.fromJson(data))
+      .map((data) => PokemonStat.fromJson(data))
       .toList();
 
-    return DetallesPokemon(
+    return PokemonDetails(
       id: json['id'],
       name: json['name'],
       types: types,
@@ -68,17 +68,17 @@ class DetallesPokemon extends Pokemon {
       moves: moves,
       abilities: abilities,
       stats: stats,
-      evolutionChain: CadenaEvolucionPokemon.fromJson(json['species']['evolution_chain']),
+      evolutionChain: PokemonEvolutionChain.fromJson(json['species']['evolution_chain']),
       effectiveness: _calculateTotalEffectiveness(types),
     );
   }
 
-  List<PokemonMoves> get sortedMoves {
+  List<PokemonMove> get sortedMoves {
     return moves..sort((a, b) => a.level.compareTo(b.level));
   }
 
   static List<PokemonTypeEffectiveness> _calculateTotalEffectiveness(
-    List<TiposPokemon> types
+    List<PokemonType> types
   ) {
     final Map<PokemonTypeEnum, int> effectivenessScores = {};
 

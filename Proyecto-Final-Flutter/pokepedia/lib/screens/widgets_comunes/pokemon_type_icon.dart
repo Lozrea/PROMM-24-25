@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pokepedia/core/utils/enums/pokemon_type.dart';
 
+// Clase que hereda de Image y usa una ruta de imagen basada en el nombre del tipo de Pokémon.
+// Esto hace que la clase sea reutilizable sin necesidad de definir rutas manualmente.
 class PokemonTypeImage extends Image {
   final PokemonTypeEnum type;
 

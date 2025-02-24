@@ -24,7 +24,7 @@ class PokemonProvider with ChangeNotifier {
 
   Future<void> fetchPokemons({
     required List<PokemonGeneration> generations,
-    required List<TiposPokemon> pokemonTypes,
+    required List<PokemonType> pokemonTypes,
     String? searchText,
     int? page,
   }) async {
@@ -34,8 +34,6 @@ class PokemonProvider with ChangeNotifier {
 
     if (page == 0) {
       _pokemons.clear();
-
-      // notifyListeners();
     }
 
     final Map<String, dynamic> where = {};
@@ -65,8 +63,6 @@ class PokemonProvider with ChangeNotifier {
     const int limitPerPage = 15;
 
     _isLoading = true;
-
-    // notifyListeners();
 
     final (result, exception) = await PokemonService.fetchList(
       limit: limitPerPage,

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:pokepedia/core/utils/enums/pokemon_type_effectiveness_enum.dart';
-import 'package:pokepedia/data/models/detalles_pokemon.dart';
+import 'package:pokepedia/data/models/pokemon_details.dart';
+import 'package:pokepedia/core/utils/enums/pokemon_type_effectiveness.dart';
 import 'package:pokepedia/screens/detalles_pokemons/widgets/section_title.dart';
 import 'package:pokepedia/screens/widgets_comunes/pokemon_type_badge.dart';
 
+// Clase que muestra los iconos de efectividad que tiene un Pokemon
 class PokemonTypesEffectiveness extends StatelessWidget {
-  final DetallesPokemon pokemon;
+  final PokemonDetails pokemon;
 
   const PokemonTypesEffectiveness({super.key, required this.pokemon});
 
@@ -16,13 +17,13 @@ class PokemonTypesEffectiveness extends StatelessWidget {
       children: [
         const SectionTitle(title: 'Effectiveness'),
         GridView.count(
-          childAspectRatio: 3.5,
-          crossAxisCount: 3,
-          crossAxisSpacing: 0,
-          mainAxisSpacing: 0,
+          childAspectRatio: 3.5, // Ajusta el aspecto de cada celda en la cuadrícula
+          crossAxisCount: 3, // Muestra 3 columnas de efectividad
+          crossAxisSpacing: 0, // Sin separación horizontal entre celdas
+          mainAxisSpacing: 0, // Sin separación vertical entre celdas
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           primary: false,
-          shrinkWrap: true,
+          shrinkWrap: true, // Evita que el GridView ocupe más espacio del necesario
           children: pokemon.effectiveness.map((entry) {
             var effectivenessInfo = _getEffectivenessInfo(entry.effectiveness);
 
@@ -42,7 +43,7 @@ class PokemonTypesEffectiveness extends StatelessWidget {
                       effectivenessInfo.iconData,
                       color: effectivenessInfo.color
                     )
-                    : null
+                    : null // No muestra nada si no hay un icono asociado
                 ),
               ],
             );
@@ -52,6 +53,7 @@ class PokemonTypesEffectiveness extends StatelessWidget {
     );
   }
 
+  // Método para determinar el icono y color basado en la efectividad del tipo de Pokémon
   static ({IconData? iconData, Color color}) _getEffectivenessInfo(
     PokemonTypeEffectivenessEnum effectiveness
   ) {
@@ -65,7 +67,7 @@ class PokemonTypesEffectiveness extends StatelessWidget {
         color: Colors.green
       ),
       _ => (
-        iconData: null,
+        iconData: null, // No muestra icono para tipos neutrales
         color: Colors.grey
       )
     };

@@ -1,14 +1,14 @@
 import 'package:intl/intl.dart';
 import 'package:pokepedia/data/models/filter_data.dart';
 import 'package:pokepedia/core/utils/enums/pokemon_type.dart';
-import 'package:pokepedia/core/utils/enums/pokemon_type_effectiveness_enum.dart';
+import 'package:pokepedia/core/utils/enums/pokemon_type_effectiveness.dart';
 
 // Clase que representa un tipo de Pokémon y su efectividad contra otros tipos.
-class TiposPokemon extends FilterData {
+class PokemonType extends FilterData {
   final String type;
-  final Map<PokemonTypeEnum, PokemonTypeEffectivenessEnum> effectiveness; // Mapa con la efectividad frente a otros tipos
+  final Map<PokemonTypeEnum, PokemonTypeEffectivenessEnum> effectiveness;
 
-  TiposPokemon({
+  PokemonType({
     required super.id,
     required String name,
     Map<PokemonTypeEnum, PokemonTypeEffectivenessEnum>? effectiveness,
@@ -17,10 +17,10 @@ class TiposPokemon extends FilterData {
     super(name: toBeginningOfSentenceCase(name));
 
   // Método de fábrica para crear una instancia de TiposPokemon desde un JSON
-  factory TiposPokemon.fromJson(Map<String, dynamic> json) {
+  factory PokemonType.fromJson(Map<String, dynamic> json) {
     var type = json['type'];
 
-    return TiposPokemon(
+    return PokemonType(
       id: type['id'] as int,
       name: type['name'] as String,
       effectiveness: _parseEffectiveness(type?['effectiveness']),
@@ -28,8 +28,8 @@ class TiposPokemon extends FilterData {
   }
 
   // Método de fábrica para crear un objeto TiposPokemon como filtro
-  factory TiposPokemon.asFilter(Map<String, dynamic> json) {
-    return TiposPokemon(
+  factory PokemonType.asFilter(Map<String, dynamic> json) {
+    return PokemonType(
       id: json['id'] as int,
       name: json['name'] as String,
       effectiveness: null

@@ -1,3 +1,4 @@
+// Clase genérica para manejar errores
 class FailureResult<T extends Exception> {
   final StackTrace stackTrace;
   final T error;

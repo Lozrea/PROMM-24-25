@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// Clase que muestra un mensaje de error cuando ocurre un problema
 class ErrorIndicator extends StatelessWidget {
   const ErrorIndicator({super.key});
 
@@ -15,7 +16,7 @@ class ErrorIndicator extends StatelessWidget {
               width: 200,
             ),
             Text(
-              "Ooops, something went wrong...",
+              "Ups, something went wrong...",
               style: Theme.of(context).textTheme.titleMedium,
             ),
             Text(

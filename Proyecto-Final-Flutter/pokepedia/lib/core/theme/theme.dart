@@ -12,11 +12,13 @@ class PokepediaAppTheme {
     fontWeight: FontWeight.bold
   );
 
+  // Define un estilo de texto para los títulos en negrita
   static const labelStyle = TextStyle(
     color: Colors.black45,
     fontWeight: FontWeight.bold
   );
 
+  // Define los estilos de texto para diferentes elementos de la UI
   static final textTheme = TextTheme(
     headlineLarge: poppinsTextStyle,
     headlineMedium: poppinsTextStyle,
@@ -29,9 +31,10 @@ class PokepediaAppTheme {
     labelSmall: labelStyle
   );
 
+  /// TEMA CLARO
   static final lightTheme = ThemeData(
     appBarTheme: const AppBarTheme(
-      backgroundColor: primaryColor
+      backgroundColor: Color(0xFFFFFFFF)
     ),
     bottomSheetTheme: BottomSheetThemeData(
       backgroundColor: Colors.grey.shade100
@@ -67,8 +70,11 @@ class PokepediaAppTheme {
     textTheme: textTheme
   );
 
+
+  /// TEMA OSCURO
   static const darkBackgroundColor = Color(0xFF050505);
 
+  // Ajusta el color primario para que sea más oscuro
   static final darkPrimaryColor = HSLColor.fromColor(primaryColor)
     .withLightness(0.25)
     .toColor();

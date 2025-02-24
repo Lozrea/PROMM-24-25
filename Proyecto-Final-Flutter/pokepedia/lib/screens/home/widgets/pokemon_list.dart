@@ -3,6 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:pokepedia/data/models/pokemon.dart';
+import 'package:pokepedia/screens/home/widgets/filter_chips.dart';
+import 'package:pokepedia/screens/widgets_comunes/nothing_found_indicator.dart';
+import 'package:pokepedia/screens/widgets_comunes/pokemon_card.dart';
 
 class PokemonList extends StatefulWidget {
   final List<Pokemon> pokemons;
@@ -89,11 +92,28 @@ class _PokemonListState extends State<PokemonList> {
                 ),
               ),
           ),
-          
+          if (_showSearchBar) const FilterChips(),
+          Expanded(
+            child: widget.pokemons.isEmpty
+              ? const NothingFoundIndicator()
+              : _buildList()
+          ),
         ],
       ),
     );
   }
 
-  
+  Widget _buildList() {
+    return ListView.builder(
+      addRepaintBoundaries: true,
+      controller: _scrollController,
+      padding: const EdgeInsets.only(bottom: 16.0),
+      shrinkWrap: widget.shrinkWrap,
+      prototypeItem: PokemonCard(pokemon: widget.pokemons.first),
+      itemCount: widget.pokemons.length,
+      itemBuilder: (context, index) {
+        return PokemonCard(pokemon: widget.pokemons[index]);
+      }
+    );
+  }
 }

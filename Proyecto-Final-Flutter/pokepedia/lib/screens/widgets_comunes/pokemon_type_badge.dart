@@ -3,6 +3,7 @@ import 'package:pokepedia/core/utils/enums/pokemon_type.dart';
 import 'package:pokepedia/core/utils/helpers/pokemon_types_helper.dart';
 import 'package:pokepedia/screens/widgets_comunes/pokemon_type_icon.dart';
 
+// Clase que muestra la insignia o distintivo con el tipo del Pokemon (Ej.: Charmander es de tipo 'Fuego')
 class PokemonTypeBadge extends StatelessWidget {
   final String type;
 

@@ -1,21 +1,21 @@
 import 'package:pokepedia/core/utils/helpers/format_text_helper.dart';
 
 // Clase que representa una habilidad de un Pokémon
-class HabilidadPokemon {
+class PokemonAbility {
   final String name;
   final String flavorText;
   final String effect;
 
-  HabilidadPokemon({
+  PokemonAbility({
     required this.name,
     required this.flavorText,
     required this.effect,
   });
 
-  factory HabilidadPokemon.fromJson(Map<String, dynamic> json) {
+  factory PokemonAbility.fromJson(Map<String, dynamic> json) {
     final ability = json['ability'];
 
-    return HabilidadPokemon (
+    return PokemonAbility (
       name: FormatTextHelper.formatName(ability['name']),
       flavorText: FormatTextHelper.formatFlavorText(ability),
       effect: FormatTextHelper.formatFlavorText(

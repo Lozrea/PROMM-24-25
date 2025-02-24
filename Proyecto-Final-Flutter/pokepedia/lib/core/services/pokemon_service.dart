@@ -1,21 +1,22 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:pokepedia/data/models/detalles_pokemon.dart';
-import 'package:pokepedia/data/models/pokemon.dart';
 import 'package:pokepedia/data/models/pokemon_generation.dart';
-import 'package:pokepedia/core/utils/graphql/queries.dart';
+import 'package:pokepedia/data/models/pokemon.dart';
+import 'package:pokepedia/data/models/pokemon_details.dart';
 import 'package:pokepedia/data/models/pokemon_type.dart';
+import 'package:pokepedia/core/utils/graphql/queries.dart';
 
+// Clase que obtiene la conexión con la API mediante GraphQL
 typedef _Response<T extends Object> = (T? result, Exception? exception);
 
 typedef GqlResponse = _Response<QueryResult>;
 
-typedef PokemonDetailsResponse = _Response<DetallesPokemon>;
+typedef PokemonDetailsResponse = _Response<PokemonDetails>;
 
 typedef PokemonListResponse = _Response<List<Pokemon>>;
 
 typedef PokemonFiltersResponse = _Response<(
   List<PokemonGeneration> generations,
-  List<TiposPokemon> types
+  List<PokemonType> types
 )>;
 
 // Se configura el cliente con el endpoint GraphQL de PokeAPI
@@ -57,7 +58,7 @@ class PokemonService {
       return (null, Exception('Empty pokemon data'));
     }
 
-    return (DetallesPokemon.fromJson(result!.data!['pokemon']), exception);
+    return (PokemonDetails.fromJson(result!.data!['pokemon']), exception);
   }
 
   // Obtiene los tipos y generaciones de pokemon para usarlos como filtros en la app
@@ -80,8 +81,8 @@ class PokemonService {
       return (null, Exception('Empty pokemon generation filters'));
     }
 
-    List<TiposPokemon> types = (result?.data?['types'] as List)
-      .map((data) => TiposPokemon.asFilter(data))
+    List<PokemonType> types = (result?.data?['types'] as List)
+      .map((data) => PokemonType.asFilter(data))
       .toList();
 
     List<PokemonGeneration> generations = (result?.data?['generations'] as List)

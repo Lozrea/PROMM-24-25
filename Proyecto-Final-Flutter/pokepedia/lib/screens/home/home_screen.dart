@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:pokepedia/core/providers/filter_provider.dart';
 import 'package:pokepedia/core/providers/pokemon_provider.dart';
-import 'package:pokepedia/screens/widgets/pokemon_list.dart';
+import 'package:pokepedia/screens/widgets_comunes/error_indicator.dart';
+import 'package:pokepedia/screens/home/widgets/pokemon_list.dart';
+import 'package:pokepedia/screens/home/widgets/pokemon_filters_button.dart';
+import 'package:pokepedia/screens/home/widgets/toggle_theme_button.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -39,20 +42,19 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('Pokepedia'),
         titleTextStyle: Theme.of(context).appBarTheme.titleTextStyle
           ?? Theme.of(context).textTheme.titleLarge?.copyWith(
-            color: Colors.white,
-            fontFamily: 'PokemonSolid',
+            color: const Color.fromARGB(255, 0, 0, 0),
+            fontFamily: 'Poppins-Black',
             shadows: [
               const Shadow(
                 blurRadius: 1,
-                color: Colors.black87,
+                color: Color.fromARGB(221, 102, 100, 100),
                 offset: Offset(1.0, 1.0),
               )
             ]
           ),
-        /**actions: const [
-         * TODO: Clase para el botón menú flotante
+        actions: const [
           ThemeToggleButton(),
-        ],*/
+        ],
         actionsIconTheme: const IconThemeData(
           color: Colors.white
         ),
@@ -60,10 +62,9 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: Consumer2<FilterProvider, PokemonProvider>(
           builder: (context, filterProvider, pokemonProvider, _) {
-            /**if (pokemonProvider.hasException) {
-             * TODO: Clase para cuando no se encuentre un Pokemon
+            if (pokemonProvider.hasException) {
               return const ErrorIndicator();
-            }*/
+            }
 
             final pokemons = filterProvider.showFavoritesOnly
               ? pokemonProvider.favorites
@@ -83,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
           }
         )
       ),
-      
+      floatingActionButton: const PokemonFiltersButton()
     );
   }
 }

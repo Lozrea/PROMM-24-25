@@ -15,7 +15,7 @@ class Pokemon {
   final String name; // Nombre del pokémon
 
   @HiveField(2)
-  final List<TiposPokemon> types; // Lista de tipos que tiene el pokémon
+  final List<PokemonType> types; // Lista de tipos que tiene el pokémon
 
   @HiveField(3)
   final String sprite; // URL del sprite del pokémon
@@ -34,7 +34,7 @@ class Pokemon {
   // Método de fábrica para crear un pokémon desde un JSON
   factory Pokemon.fromJson(Map<String, dynamic> json) {
     final types = (json['types'] as List)
-      .map((data) => TiposPokemon.fromJson(data))
+      .map((data) => PokemonType.fromJson(data))
       .toList();
 
     return Pokemon(
@@ -46,7 +46,7 @@ class Pokemon {
   }
 
   // Obtiene el tipo principal del pokémon (el primero en la lista)
-  TiposPokemon get mainType {
+  PokemonType get mainType {
     return types.first;
   }
 

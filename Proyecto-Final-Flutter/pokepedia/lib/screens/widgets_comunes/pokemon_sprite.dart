@@ -4,6 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:pokepedia/data/models/pokemon.dart';
 import 'package:pokepedia/core/utils/extensions/color_extension.dart';
 
+// Clase que muestra el sprite del Pokemon con un fondo animado
 class PokemonSprite extends StatelessWidget {
   static const double _spriteScaleFactor = 0.8;
 
@@ -40,8 +41,7 @@ class PokemonSprite extends StatelessWidget {
             ),
           ).animate(
             delay: const Duration(milliseconds: 300),
-            // FIXME: Fix the animations cost
-            // onPlay: (controller) => controller.repeat(reverse: true),
+            onPlay: (controller) => controller.repeat(reverse: true),
             effects: [
               const RotateEffect(
                 curve: Easing.linear,

@@ -8,6 +8,7 @@ import 'package:pokepedia/screens/widgets_comunes/pokemon_sprite.dart';
 import 'package:pokepedia/screens/widgets_comunes/pokemon_types.dart';
 import 'package:provider/provider.dart';
 
+// Representa la tarjeta de un Pokemon en la interfaz, que llevará a la pantalla de detalles del mismo
 class PokemonCard extends StatelessWidget {
   final Pokemon pokemon;
 

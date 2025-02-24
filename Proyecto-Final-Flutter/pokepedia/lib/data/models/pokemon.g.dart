@@ -25,9 +25,9 @@ class PokemonAdapter extends TypeAdapter<Pokemon> {
     );
   }
 
-  List<TiposPokemon> _parseTypes(List<String> data) {
+  List<PokemonType> _parseTypes(List<String> data) {
     return data.map((item) {
-      return TiposPokemon(id: 0, name: item);
+      return PokemonType(id: 0, name: item);
     }).toList();
   }
 

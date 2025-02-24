@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pokepedia/data/models/pokemon.dart';
 import 'package:pokepedia/screens/widgets_comunes/pokemon_type_badge.dart';
 
+// Clase que muestra los iconos de los tipos al que pertenece un POkemon
 class PokemonTypes extends StatelessWidget {
   final Pokemon pokemon;
 
@@ -10,8 +11,8 @@ class PokemonTypes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      spacing: 4.0,
-      runSpacing: 4.0,
+      spacing: 4.0, // Espacio horizontal entre los elementos
+      runSpacing: 4.0, // Espacio vertical entre líneas de elementos
       children: pokemon.types.map((pokemonType) {
         return PokemonTypeBadge(type: pokemonType.type);
       }).toList()

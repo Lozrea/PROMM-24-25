@@ -8,13 +8,13 @@ class FilterProvider with ChangeNotifier {
   bool _showFavoritesOnly = false;
   String _searchText = '';
   List<PokemonGeneration> _generations = [];
-  List<TiposPokemon> _types = [];
-  List<TiposPokemon> _selectedTypes = [];
+  List<PokemonType> _types = [];
+  List<PokemonType> _selectedTypes = [];
   List<PokemonGeneration> _selectedGenerations = [];
 
   List<PokemonGeneration> get selectedGenerations => _selectedGenerations;
 
-  List<TiposPokemon> get selectedTypes => _selectedTypes;
+  List<PokemonType> get selectedTypes => _selectedTypes;
 
   bool get showFavoritesOnly => _showFavoritesOnly;
 
@@ -58,9 +58,9 @@ class FilterProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  List<TiposPokemon> get types => _types;
+  List<PokemonType> get types => _types;
 
-  set types(List<TiposPokemon> types) {
+  set types(List<PokemonType> types) {
     _selectedTypes = types;
 
     notifyListeners();
@@ -72,7 +72,7 @@ class FilterProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void toggleTypeSelection(TiposPokemon type) {
+  void toggleTypeSelection(PokemonType type) {
     _selectedTypes.toggleElement(type);
 
     notifyListeners();

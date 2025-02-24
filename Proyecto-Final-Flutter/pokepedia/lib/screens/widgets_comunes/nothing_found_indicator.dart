@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// Clase que muestra un mensaje cuando no se encuentran resultados en la búsqueda
 class NothingFoundIndicator extends StatelessWidget {
   const NothingFoundIndicator({super.key});
 
@@ -15,7 +16,7 @@ class NothingFoundIndicator extends StatelessWidget {
               width: 200,
             ),
             Text(
-              "Nothing found...",
+              "Ups! Nothing found...",
               style: Theme.of(context).textTheme.titleMedium,
             ),
           ],
