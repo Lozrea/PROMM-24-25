@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pokepedia/data/models/pokemon.dart';
 import 'package:pokepedia/screens/widgets_comunes/pokemon_type_badge.dart';
 
-// Clase que muestra los iconos de los tipos al que pertenece un POkemon
+// Widget que muestra los iconos de los tipos al que pertenece un POkemon
 class PokemonTypes extends StatelessWidget {
   final Pokemon pokemon;
 

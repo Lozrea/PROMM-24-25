@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pokepedia/core/utils/extensions/color_extension.dart';
 
+// Clase que define los temas de la app tanto para el tema claro como el oscuro.
+// Se establece el color primario, los estilos de texto y los temas para las interfaces de usuario
 class PokepediaAppTheme {
   static const primaryColor = Color(0xFFC20032);
 
@@ -75,8 +77,8 @@ class PokepediaAppTheme {
   static const darkBackgroundColor = Color(0xFF050505);
 
   // Ajusta el color primario para que sea más oscuro
-  static final darkPrimaryColor = HSLColor.fromColor(primaryColor)
-    .withLightness(0.25)
+  static final darkPrimaryColor = HSLColor.fromColor(const Color(0xFFFFFFFF))
+    .withLightness(0.5)
     .toColor();
 
   static final darkTitleStyle = titleStyle.copyWith(

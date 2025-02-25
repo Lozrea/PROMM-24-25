@@ -10,6 +10,7 @@ import 'package:pokepedia/data/models/pokemon_type.dart';
 import 'package:pokepedia/screens/widgets_comunes/pokemon_type_icon.dart';
 import 'package:provider/provider.dart';
 
+// Botón flotante que permite activar los filtros de Pokémon
 class PokemonFiltersButton extends StatefulWidget {
   const PokemonFiltersButton({super.key});
 
@@ -18,21 +19,23 @@ class PokemonFiltersButton extends StatefulWidget {
 }
 
 class _PokemonFiltersButtonState extends State<PokemonFiltersButton> {
-  Timer? _generationsFilterDebouncer;
-  Timer? _typesFilterDebouncer;
+  Timer? _generationsFilterDebouncer; // Temporizador para los filtros de generación
+  Timer? _typesFilterDebouncer; // Temporizador para los filtros de tipo
 
   @override
   Widget build(BuildContext context) {
     return Consumer<FilterProvider>(
       builder: (context, filterProvider, _) {
+        // Botón flotante con un icono de menú
         return SpeedDial(
           animatedIcon: AnimatedIcons.menu_close,
           overlayColor: Colors.black,
           overlayOpacity: 0.5,
           backgroundColor: Theme.of(context).primaryColor,
           foregroundColor: Colors.white,
-          tooltip: 'Filters',
+          tooltip: 'Filters', // Tooltip cuando el usuario pasa el cursor sobre el botón
           children: [
+            // Opciones de filtros que se despliegan
             _buildSpeedDialChild(
               child: const Icon(Icons.onetwothree_rounded),
               label: 'Generations',

@@ -7,6 +7,7 @@ import 'package:pokepedia/screens/home/widgets/pokemon_filters_button.dart';
 import 'package:pokepedia/screens/home/widgets/toggle_theme_button.dart';
 import 'package:provider/provider.dart';
 
+// Pantalla principal que contiene la lista de Pokémon, los filtros y el tema de la aplicación
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -22,6 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
     _fetchPokemons();
   }
 
+  // Método para obtener Pokémon desde el proveedor
   void _fetchPokemons({int page = 0}) {
     final filterProvider = Provider.of<FilterProvider>(context, listen: false);
 
@@ -44,30 +46,23 @@ class _HomeScreenState extends State<HomeScreen> {
           ?? Theme.of(context).textTheme.titleLarge?.copyWith(
             color: const Color.fromARGB(255, 0, 0, 0),
             fontFamily: 'Poppins-Black',
-            shadows: [
-              const Shadow(
-                blurRadius: 1,
-                color: Color.fromARGB(221, 102, 100, 100),
-                offset: Offset(1.0, 1.0),
-              )
-            ]
           ),
         actions: const [
-          ThemeToggleButton(),
+          ThemeToggleButton(), // Agrega el botón de cambio de tema
         ],
         actionsIconTheme: const IconThemeData(
-          color: Colors.white
+          color: Colors.white,
         ),
       ),
       body: SafeArea(
         child: Consumer2<FilterProvider, PokemonProvider>(
           builder: (context, filterProvider, pokemonProvider, _) {
             if (pokemonProvider.hasException) {
-              return const ErrorIndicator();
+              return const ErrorIndicator(); // Muestra un mensaje de error si hay una excepción
             }
 
             final pokemons = filterProvider.showFavoritesOnly
-              ? pokemonProvider.favorites
+              ? pokemonProvider.favorites // Filtra solo los favoritos si es necesario
               : pokemonProvider.pokemons;
 
             return PokemonList(
@@ -78,13 +73,13 @@ class _HomeScreenState extends State<HomeScreen> {
               onSearchTextChanged: (String searchText) {
                 filterProvider.searchText = searchText;
 
-                _fetchPokemons(page: 0);
+                _fetchPokemons(page: 0); // Refresca la lista con el nuevo texto de búsqueda
               },
             );
           }
         )
       ),
-      floatingActionButton: const PokemonFiltersButton()
+      floatingActionButton: const PokemonFiltersButton() // Botón flotante de filtros
     );
   }
 }

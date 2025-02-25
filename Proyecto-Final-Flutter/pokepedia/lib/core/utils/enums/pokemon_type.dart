@@ -1,26 +1,9 @@
+// Enum que representa los diferentes tipos de Pokemons en la app
 enum PokemonTypeEnum {
-  bug,
-  dark,
-  dragon,
-  electric,
-  fairy,
-  fighting,
-  fire,
-  flying,
-  ghost,
-  grass,
-  ground,
-  ice,
-  normal,
-  poison,
-  psychic,
-  rock,
-  shadow,
-  steel,
-  stellar,
-  unknown,
-  water;
+  bug, dark, dragon, electric, fairy, fighting, fire, flying, ghost, grass,
+  ground, ice, normal, poison, psychic, rock, shadow, steel, stellar, unknown, water;
 
+  // Método para convertir un string del tipo de Pokémon en un valor del enum
   static PokemonTypeEnum parse(String pokemonType) {
     return switch (pokemonType) {
       'bug' => PokemonTypeEnum.bug,
@@ -49,6 +32,7 @@ enum PokemonTypeEnum {
   }
 }
 
+// Método para obtener el nombre en string del tipo de Pokémon correspondiente al enum
 extension PokemonTypeEnumExtension on PokemonTypeEnum {
   String get name {
     return switch (this) {

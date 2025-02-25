@@ -8,6 +8,7 @@ import 'package:pokepedia/core/utils/extensions/color_extension.dart';
 import 'package:pokepedia/screens/detalles_pokemons/widgets/section_title.dart';
 import 'package:provider/provider.dart';
 
+// Widget que muestra las estadísticas del Pokémon
 class PokemonStats extends StatelessWidget {
   final PokemonDetails pokemon;
 

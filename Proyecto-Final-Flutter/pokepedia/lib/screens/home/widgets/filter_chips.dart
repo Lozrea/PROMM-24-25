@@ -6,6 +6,7 @@ import 'package:pokepedia/data/models/pokemon_type.dart';
 import 'package:pokepedia/screens/widgets_comunes/pokemon_type_badge.dart';
 import 'package:provider/provider.dart';
 
+// Widget que muestra los filtros aplicados con chips (como un circuíto de filtros)
 class FilterChips extends StatefulWidget {
   const FilterChips({super.key});
 
@@ -14,11 +15,12 @@ class FilterChips extends StatefulWidget {
 }
 
 class _FilterChipsState extends State<FilterChips> {
-  bool _isOffstaged = true;
+  bool _isOffstaged = true; // Variable que controla si los filtros están expandidos o no
 
   @override
   Widget build(BuildContext context) => Consumer<FilterProvider>(
     builder: (context, filterProvider, _) {
+      // Verifica si no hay filtros seleccionados y retorna un SizedBox vacío
       if (filterProvider.selectedTypes.isEmpty
         && filterProvider.selectedGenerations.isEmpty
         && filterProvider.searchText.isEmpty
@@ -28,6 +30,7 @@ class _FilterChipsState extends State<FilterChips> {
 
       final searchTextChip = _buildSearchChip(filterProvider.searchText);
 
+      // Crea chips para los filtros de tipo y generación seleccionados
       final types = filterProvider.selectedTypes
         .map((pokemonType) => _buildTypeChip(pokemonType))
         .toList();
@@ -36,6 +39,7 @@ class _FilterChipsState extends State<FilterChips> {
         .map((generation) => _buildGenerationChip(generation))
         .toList();
 
+       // Lista final de todos los chips
       final List<Widget> chips = <Widget>[
         if (filterProvider.searchText.isNotEmpty) searchTextChip,
         ...generations,
@@ -51,7 +55,7 @@ class _FilterChipsState extends State<FilterChips> {
           padding: const EdgeInsets.only(bottom: 16, left: 16, right: 16),
           child: InkWell(
             borderRadius: BorderRadius.circular(16),
-            onTap: _toggleExpansion,
+            onTap: _toggleExpansion, // Al tocar, expande o contrae el widget
             child: DecoratedBox(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
@@ -78,6 +82,7 @@ class _FilterChipsState extends State<FilterChips> {
     }
   );
 
+  // Alterna entre expandido y contraído
   void _toggleExpansion() {
     setState(() {
       _isOffstaged = !_isOffstaged;

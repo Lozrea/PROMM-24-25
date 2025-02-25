@@ -3,6 +3,7 @@ import 'package:pokepedia/data/models/pokemon.dart';
 import 'package:pokepedia/core/providers/pokemon_provider.dart';
 import 'package:provider/provider.dart';
 
+// Clase para el botón de "Favoritos", es decir, cuando marcamos un Pokemon como favorito
 class ToggleFavoritePokemonButton extends StatelessWidget {
   final Pokemon pokemon;
 

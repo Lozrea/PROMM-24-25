@@ -1,29 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:pokepedia/core/utils/enums/pokemon_type.dart';
 
+// Clase que contiene métodos para trabajar con tipos de Pokémon (imágenes, colores, etc.).
 class PokemonTypesHelper {
+  // Devuelve el fondo correspondiente al tipo de Pokémon
   static String getTypeBackground(String type) {
     return "assets/images/pokemon_types/backgrounds/$type.jpg";
   }
 
+  // Devuelve el icono correspondiente al tipo de Pokémon
   static String getTypeIcon(String type) {
     return "assets/images/pokemon_types/icons/$type.png";
   }
 
+  // Precachea todas las imágenes de los tipos de Pokemons para optimizar la carga
   static void precacheTypeImages(BuildContext context) {
     for (var type in PokemonTypeEnum.values) {
       precacheImage(AssetImage(getTypeBackground(type.name)), context);
-
       precacheImage(AssetImage(getTypeIcon(type.name)), context);
     }
 
+    // Precarga de algunas imágenes adicionales
     precacheImage(const AssetImage("assets/images/pokeball-background.png"), context);
-
     precacheImage(const AssetImage("assets/images/confused-pikachu.png"), context);
-
     precacheImage(const AssetImage("assets/images/scared-psyduck.png"), context);
   }
 
+  // Obtiene el color asociado a un tipo de Pokémon
   static Color getTypeColor(String type) {
     return switch (type.toLowerCase()) {
       'bug' => const Color(0xFF90C12C),
@@ -46,10 +49,11 @@ class PokemonTypesHelper {
       'steel' => const Color(0xFF5A8EA1),
       'stellar' => const Color(0xFFCC0000),
       'water' => const Color(0xFF4D90D5),
-      _ => const Color(0xFFCC0000)
+      _ => const Color(0xFFCC0000) // Valor por defectpo
     };
   }
 
+  // Devuelve un texto representativo del icono de tipo de Pokémon
   String getTypeTextIcon(String type) {
     return switch (type.toLowerCase()) {
       'bug' => 'A',

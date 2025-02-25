@@ -3,6 +3,9 @@ import 'package:pokepedia/data/models/pokemon.dart';
 import 'package:pokepedia/core/utils/helpers/pokemon_types_helper.dart';
 import 'package:pokepedia/screens/widgets_comunes/pokemon_sprite.dart';
 
+// Widget que muestra el fondo del encabezado de la pantalla de detalles del Pokémon.
+// Usa una imagen de fondo basada en el tipo principal del Pokémon y superpone un
+// gradiente de color en la parte superior para darle un efecto visual
 class PokemonHeaderBackground extends StatelessWidget {
   final Pokemon pokemon;
 

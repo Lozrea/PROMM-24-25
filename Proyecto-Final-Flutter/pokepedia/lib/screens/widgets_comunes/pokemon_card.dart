@@ -8,7 +8,8 @@ import 'package:pokepedia/screens/widgets_comunes/pokemon_sprite.dart';
 import 'package:pokepedia/screens/widgets_comunes/pokemon_types.dart';
 import 'package:provider/provider.dart';
 
-// Representa la tarjeta de un Pokemon en la interfaz, que llevará a la pantalla de detalles del mismo
+// Widget que representa la tarjeta de un Pokémon en la interfaz de usuario. 
+// Al hacer clic en la tarjeta, se navega a la pantalla de detalles del Pokémon seleccionado.
 class PokemonCard extends StatelessWidget {
   final Pokemon pokemon;
 
@@ -17,6 +18,7 @@ class PokemonCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      // Navegar a la pantalla de detalles cuando se toca la tarjeta
       onTap: () {
         Navigator.push(
           context,
@@ -48,14 +50,14 @@ class PokemonCard extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        _getPokemonIdBadge(context),
-                        _getPokemonName(context),
-                        PokemonTypes(pokemon: pokemon)
+                        _getPokemonIdBadge(context), // Muestra el ID del Pokémon
+                        _getPokemonName(context),     // Muestra el nombre del Pokémon
+                        PokemonTypes(pokemon: pokemon) // Muestra los tipos del Pokémon
                       ],
                     ),
                     PokemonSprite(
                       size: 128,
-                      pokemon: pokemon,
+                      pokemon: pokemon, // Muestra el sprite del Pokémon
                     )
                   ],
                 )
@@ -67,6 +69,7 @@ class PokemonCard extends StatelessWidget {
     );
   }
 
+  // Muestra el nombre del Pokémon con el formato adecuado y la sombra si es modo oscuro
   Widget _getPokemonName(BuildContext context) {
     bool isDarkMode = Provider.of<ThemeProvider>(context).isDarkMode;
 
@@ -77,7 +80,7 @@ class PokemonCard extends StatelessWidget {
           maxWidth: MediaQuery.sizeOf(context).width * 0.5,
         ),
         child: Text(
-          toBeginningOfSentenceCase(pokemon.name),
+          toBeginningOfSentenceCase(pokemon.name), // Formatea el nombre
           style: Theme.of(context).textTheme.titleLarge!.copyWith(
             fontWeight: FontWeight.bold,
             overflow: TextOverflow.ellipsis,
@@ -94,6 +97,7 @@ class PokemonCard extends StatelessWidget {
     );
   }
 
+  // Muestra el ID del Pokémon con un fondo decorado
   Widget _getPokemonIdBadge(BuildContext context) {
     bool isDarkMode = Provider.of<ThemeProvider>(context).isDarkMode;
 
@@ -132,6 +136,7 @@ class PokemonCard extends StatelessWidget {
     );
   }
 
+  // Devuelve un gradiente de fondo en función del modo oscuro o claro
   LinearGradient _getBackgroundGradient(BuildContext context) {
     bool isDarkMode = Provider.of<ThemeProvider>(context).isDarkMode;
 
@@ -142,6 +147,7 @@ class PokemonCard extends StatelessWidget {
     );
   }
 
+  // Define los colores del gradiente según el modo oscuro o claro
   List<Color> _getBackgroundGradientColors(bool isDarkMode) {
     var hslColor = HSLColor.fromColor(pokemon.typeColor);
 

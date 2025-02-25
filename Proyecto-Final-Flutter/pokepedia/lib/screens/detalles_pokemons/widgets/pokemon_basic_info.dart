@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:pokepedia/data/models/pokemon_details.dart';
 import 'package:pokepedia/screens/detalles_pokemons/widgets/section_title.dart';
 
+// Widget que muestra la información básica de un Pokémon, como su altura, peso y experiencia base
 class PokemonBasicInfo extends StatefulWidget {
   final PokemonDetails pokemon;
 

@@ -3,6 +3,7 @@ import 'package:pokepedia/data/models/pokemon_details.dart';
 import 'package:pokepedia/core/utils/enums/pokemon_type.dart';
 import 'package:pokepedia/screens/widgets_comunes/pokemon_type_icon.dart';
 
+// Widget que muestra una lista de los movimientos que puede aprender un Pokémon
 class PokemonMovesTab extends StatelessWidget {
   final PokemonDetails pokemon;
 

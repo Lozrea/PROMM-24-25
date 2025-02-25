@@ -9,6 +9,8 @@ import 'package:pokepedia/core/providers/pokemon_provider.dart';
 import 'package:pokepedia/core/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 
+// Esta función main es el punto de entrada de la aplicación. Configura la inicialización de la aplicación
+// y gestiona configuraciones previas como la restricción de la orientación y la inicialización de bases de datos.
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -16,15 +18,16 @@ void main() async {
     DeviceOrientation.portraitUp // Restringe la orientación a vertical
   ]);
 
-  final appDir = await getApplicationDocumentsDirectory(); // Obtiene el directorio de documentos de la app
+  final appDir = await getApplicationDocumentsDirectory(); // Obtiene el directorio de documentos para la app
 
-  await Hive.initFlutter(appDir.path); // Inicializa Hive con el directorio de la app
+  await Hive.initFlutter(appDir.path); // Inicializa Hive con la ruta del directorio de documentos de la app
 
-  Hive.registerAdapter(PokemonAdapter()); // Registra el adaptador del modelo Pokémon
+  Hive.registerAdapter(PokemonAdapter()); // Registra el adaptador necesario para almacenar objetos de tipo Pokemon en Hive
 
   await Hive.openBox<Pokemon>('favorite_pokemons'); // Abre una "caja" para almacenar Pokemon favoritos
 
   runApp(
+    // Se utiliza MultiProvider para gestionar el estado de múltiples proveedores
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ThemeProvider()), // Proveedor para el tema

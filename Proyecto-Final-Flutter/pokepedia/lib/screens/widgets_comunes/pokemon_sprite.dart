@@ -4,7 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:pokepedia/data/models/pokemon.dart';
 import 'package:pokepedia/core/utils/extensions/color_extension.dart';
 
-// Clase que muestra el sprite del Pokemon con un fondo animado
+// Widget que muestra el sprite del Pokémon con un fondo animado y filtrado por el tipo
 class PokemonSprite extends StatelessWidget {
   static const double _spriteScaleFactor = 0.8;
 

@@ -1,8 +1,9 @@
 enum PokemonTypeEffectivenessEnum {
-  resistant,
-  neutral,
-  vulnerable;
+  resistant, // Resistente a un tipo de ataque
+  neutral, // Eficacia neutral
+  vulnerable; // Vulnerable a un tipo de ataque
 
+  // Método para analizar la eficacia de un tipo según un puntaje
   static PokemonTypeEffectivenessEnum parse(int score) {
     return switch (score) {
       > 0 => PokemonTypeEffectivenessEnum.resistant,
@@ -13,6 +14,7 @@ enum PokemonTypeEffectivenessEnum {
 }
 
 extension PokemonTypeEffectivenessEnumExtension on PokemonTypeEffectivenessEnum {
+  // Obtener el puntaje asociado a cada tipo de eficacia
   int get score {
     return switch (this) {
       PokemonTypeEffectivenessEnum.resistant => 1,

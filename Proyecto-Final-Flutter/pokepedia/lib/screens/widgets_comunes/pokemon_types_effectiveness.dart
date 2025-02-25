@@ -4,7 +4,7 @@ import 'package:pokepedia/core/utils/enums/pokemon_type_effectiveness.dart';
 import 'package:pokepedia/screens/detalles_pokemons/widgets/section_title.dart';
 import 'package:pokepedia/screens/widgets_comunes/pokemon_type_badge.dart';
 
-// Clase que muestra los iconos de efectividad que tiene un Pokemon
+// Widget que muestra los iconos de efectividad que tiene un Pokemon
 class PokemonTypesEffectiveness extends StatelessWidget {
   final PokemonDetails pokemon;
 

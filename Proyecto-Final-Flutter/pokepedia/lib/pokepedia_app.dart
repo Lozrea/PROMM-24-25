@@ -6,6 +6,7 @@ import 'package:pokepedia/core/utils/helpers/pokemon_types_helper.dart';
 import 'package:pokepedia/core/theme/theme.dart';
 import 'package:provider/provider.dart';
 
+// Clase principal de la aplicación, que gestiona el tema y los filtros
 class PokepediaApp extends StatefulWidget {
   const PokepediaApp({super.key});
 

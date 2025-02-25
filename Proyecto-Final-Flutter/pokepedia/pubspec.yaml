@@ -81,16 +81,6 @@ flutter:
     - assets/images/pokemon_types/icons/water.png
 
   fonts:
-  #La tipo de pokemon no es segura, demasiado de fantasía
-    # - family: PokeGOTypes 
-    #   fonts:
-    #     - asset: assets/fonts/pokemon/PokeGOTypes.ttf
-    # - family: PokemonHollow
-    #   fonts:
-    #     - asset: assets/fonts/pokemon/Pokemon Hollow.ttf
-    # - family: PokemonSolid
-    #   fonts:
-    #     - asset: assets/fonts/pokemon/Pokemon Solid.ttf
     - family: Poppins
       fonts:
         - asset: assets/fonts/poppins/Poppins-ThinItalic.ttf

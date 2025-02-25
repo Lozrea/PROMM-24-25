@@ -6,6 +6,8 @@ import 'package:pokepedia/screens/detalles_pokemons/widgets/pokemon_stats.dart';
 import 'package:pokepedia/screens/widgets_comunes/pokemon_types.dart';
 import 'package:pokepedia/screens/widgets_comunes/pokemon_types_effectiveness.dart';
 
+// Widget que combina varios detalles del Pokémon, como la descripción,
+// los tipos, la información básica, la efectividad de los tipos, las estadísticas y las habilidades
 class PokemonInfoTab extends StatelessWidget {
   final PokemonDetails pokemon;
 

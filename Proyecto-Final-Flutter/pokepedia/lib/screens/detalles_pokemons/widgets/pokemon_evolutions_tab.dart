@@ -3,6 +3,10 @@ import 'package:pokepedia/data/models/pokemon_details.dart';
 import 'package:pokepedia/screens/widgets_comunes/nothing_found_indicator.dart';
 import 'package:pokepedia/screens/widgets_comunes/pokemon_card.dart';
 
+// Widget que muestra una lista de las evoluciones de un Pokémon.
+// Si el Pokémon no tiene más que una etapa de evolución, se muestra
+// un indicador de que no se encontraron evoluciones. Si existen múltiples etapas,
+// se construye una lista de tarjetas que representan las diferentes etapas de evolución.
 class PokemonEvolutionsTab extends StatelessWidget {
   final PokemonDetails pokemon;
 

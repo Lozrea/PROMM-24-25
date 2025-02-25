@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
+// Widget que muestra un logo giratorio con una animación constante
 class RotatingLogo extends StatelessWidget {
   final Duration duration;
   final Curve curve;

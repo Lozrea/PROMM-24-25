@@ -3,6 +3,8 @@ import 'package:intl/intl.dart';
 import 'package:pokepedia/data/models/pokemon_details.dart';
 import 'package:pokepedia/screens/detalles_pokemons/widgets/section_title.dart';
 
+// Widget que muestra las habilidades de un Pokémon dentro de una lista.
+// Toma los detalles del Pokémon (pokemon) y genera una lista de habilidades
 class PokemonAbilities extends StatelessWidget {
   final PokemonDetails pokemon;
 

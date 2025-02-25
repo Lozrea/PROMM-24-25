@@ -12,13 +12,14 @@ import 'package:pokepedia/screens/widgets_comunes/rotating_logo.dart';
 import 'package:pokepedia/screens/detalles_pokemons/widgets/toggle_favorite_pokemon_button.dart';
 import 'package:provider/provider.dart';
 
+// Pantalla que muestra los detalles de un Pokémon, incluyendo su tipo, movimientos y evoluciones
 class PokemonDetailsScreen extends StatelessWidget {
   static const List<Tab> tabs = [
     Tab(text: 'Info'),
     Tab(text: 'Moves'),
     Tab(text: 'Evolutions'),
   ];
-  final Pokemon pokemon;
+  final Pokemon pokemon; // Recibe un objeto Pokemon para mostrar sus detalles
 
   const PokemonDetailsScreen({
     super.key,
@@ -27,50 +28,53 @@ class PokemonDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
+    return DefaultTabController( // Controlador para manejar las pestañas
       length: tabs.length,
       child: Scaffold(
-        body: NestedScrollView(
+        body: NestedScrollView( // Permite que las pestañas tengan un efecto de desplazamiento
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
-            _renderHeader(context),
-            _renderTabs(context),
+            _renderHeader(context), // Renderiza el encabezado de la pantalla
+            _renderTabs(context), // Renderiza las pestañas
           ],
-          body: _renderBody()
+          body: _renderBody() // Contenido de la pantalla
         )
       ),
     );
   }
 
   Widget _renderHeader(BuildContext context) {
+    // Obtiene el proveedor de tema
     final themeProvider = Provider.of<ThemeProvider>(context);
 
     final headerColor = themeProvider.isDarkMode
-      ? hslColor.withLightness(0.25).toColor()
-      : pokemon.typeColor;
+      ? hslColor.withLightness(0.25).toColor()  // Color del encabezado según el tema oscuro
+      : pokemon.typeColor; // Usa el color del tipo de Pokémon en el tema claro
 
+    // Barra de la aplicación que se desplaza
     return SliverAppBar(
       backgroundColor: headerColor,
       expandedHeight: 300.0,
       floating: false,
       iconTheme: const IconThemeData(color: Colors.white),
-      pinned: true,
+      pinned: true, // La barra se mantiene fija al desplazarse
       actions: [
-        ToggleFavoritePokemonButton(pokemon: pokemon)
+        ToggleFavoritePokemonButton(pokemon: pokemon)  // Botón para marcar como favorito
       ],
+      // Espacio flexible que se ajusta con el desplazamiento
       flexibleSpace: FlexibleSpaceBar(
         background: PokemonHeaderBackground(pokemon: pokemon),
         centerTitle: true,
         title: ConstrainedBox(
           constraints: BoxConstraints(
-            maxWidth: MediaQuery.sizeOf(context).width * 0.85,
+            maxWidth: MediaQuery.sizeOf(context).width * 0.85, // Limita el ancho al 85% de la pantalla
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Text(
-              toBeginningOfSentenceCase(pokemon.name),
+              toBeginningOfSentenceCase(pokemon.name), // Muestra el nombre del Pokémon con formato
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
                 color: Colors.white,
-                overflow: TextOverflow.ellipsis,
+                overflow: TextOverflow.ellipsis, // Si el texto es largo, se corta
                 shadows: [
                   const Shadow(
                     blurRadius: 10,
